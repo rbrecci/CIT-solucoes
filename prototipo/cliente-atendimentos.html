@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Meus atendimentos · CTI Escuta</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="css/cti.css">
+<style>tbody td:nth-child(2){min-width:190px}</style>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <a class="brand" href="login.html">
+      <span class="brand-mark"><svg class="i lg" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22z"/></svg></span>
+      <span class="brand-name">CTI<span>escuta</span><i></i></span>
+    </a>
+    <div class="nav-label">Espaço cliente</div>
+    <nav class="nav" aria-label="Menu principal">
+      <a class="active" href="cliente-atendimentos.html"><svg class="i" viewBox="0 0 24 24"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M9 12h6M9 16h6"/></svg>Meus atendimentos</a>
+      <a href="cliente-enviar.html"><svg class="i" viewBox="0 0 24 24"><path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/></svg>Enviar feedback</a>
+      <a href="cliente-feedbacks.html"><svg class="i" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 13h5"/></svg>Meus feedbacks</a>
+    </nav>
+    <div class="sidebar-foot">
+      <div class="help-card"><strong>Vamos ouvir melhor?</strong><p>Feedbacks são o começo de uma boa conexão.</p></div>
+      <div class="identity-note">Projeto SENAI · Identidade provisória. Marca oficial pendente de validação.</div>
+      <div class="user-card">
+        <div class="avatar">L</div>
+        <div class="who"><strong>Lucas Ferreira</strong><small>Cliente</small></div>
+        <a class="logout" href="login.html" aria-label="Sair da conta"><svg class="i" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5M21 12H9"/></svg></a>
+      </div>
+    </div>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <div class="crumbs">Plataforma de experiência <span>/</span> <strong>Cliente</strong></div>
+      <div class="topbar-right"><span class="env-pill">Ambiente acadêmico</span><div class="avatar sm">L</div></div>
+    </header>
+
+    <main class="content">
+      <div class="page-head">
+        <div>
+          <div class="eyebrow">Ouvir. Entender. Evoluir.</div>
+          <h1>Meus atendimentos<span class="accent">.</span></h1>
+          <p>Sua experiência importa. Estamos aqui para ouvir você.</p>
+        </div>
+      </div>
+
+      <div class="banner"><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg><div><strong>Modo de demonstração.</strong> Análises por regras locais, sem IA. A base inicial contém dados fictícios.</div></div>
+
+      <div class="toolbar" style="margin-top:0">
+        <div><h2>Estamos com você em cada atendimento</h2><p>6 registros disponíveis para sua conta</p></div>
+      </div>
+      <div class="card">
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Protocolo</th><th>Assunto</th><th>Canal</th><th>Status</th><th>Data</th><th>Ação</th></tr></thead>
+            <tbody>
+            <tr>
+              <td><strong class="num">ATD-2026-0001</strong></td>
+              <td><strong>Instabilidade na conexão do link dedicado</strong><small>Atendente: Rafael Moura</small></td>
+              <td>Telefone</td>
+              <td><span class="tag resolvido">Resolvido</span></td>
+              <td class="num">03/10/2026</td>
+              <td><a class="link" href="cliente-enviar.html">Avaliar <svg class="i sm" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></td>
+            </tr>
+            <tr>
+              <td><strong class="num">ATD-2026-0002</strong></td>
+              <td><strong>Migração de servidores para a nuvem</strong><small>Atendente: Camila Rocha</small></td>
+              <td>Portal</td>
+              <td><span class="tag andamento">Em andamento</span></td>
+              <td class="num">09/10/2026</td>
+              <td><a class="link" href="cliente-enviar.html">Avaliar <svg class="i sm" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></td>
+            </tr>
+            <tr>
+              <td><strong class="num">ATD-2026-0003</strong></td>
+              <td><strong>Bloqueio de acesso à VPN corporativa</strong><small>Atendente: Bruno Tavares</small></td>
+              <td>Chat</td>
+              <td><span class="tag resolvido">Resolvido</span></td>
+              <td class="num">14/10/2026</td>
+              <td><a class="link" href="cliente-enviar.html">Avaliar <svg class="i sm" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></td>
+            </tr>
+            <tr>
+              <td><strong class="num">ATD-2026-0004</strong></td>
+              <td><strong>Revisão das regras de firewall</strong><small>Atendente: Juliana Prado</small></td>
+              <td>E-mail</td>
+              <td><span class="tag neutro">Aberto</span></td>
+              <td class="num">21/10/2026</td>
+              <td><a class="link" href="cliente-enviar.html">Avaliar <svg class="i sm" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></td>
+            </tr>
+            <tr>
+              <td><strong class="num">ATD-2026-0005</strong></td>
+              <td><strong>Lentidão no backup em nuvem</strong><small>Atendente: Camila Rocha</small></td>
+              <td>Chat</td>
+              <td><span class="tag andamento">Em andamento</span></td>
+              <td class="num">27/10/2026</td>
+              <td><a class="link" href="cliente-enviar.html">Avaliar <svg class="i sm" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></td>
+            </tr>
+            <tr>
+              <td><strong class="num">ATD-2026-0006</strong></td>
+              <td><strong>Alerta de tentativa de acesso suspeita</strong><small>Atendente: Rafael Moura</small></td>
+              <td>Portal</td>
+              <td><span class="tag resolvido">Resolvido</span></td>
+              <td class="num">29/10/2026</td>
+              <td><a class="link" href="cliente-enviar.html">Avaliar <svg class="i sm" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <footer class="content-foot"><span>CTI Escuta · Cada voz, uma oportunidade.</span><span>Conectividade / Segurança / Cloud</span></footer>
+    </main>
+  </div>
+</div>
+</body>
+</html>

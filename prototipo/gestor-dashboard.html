@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Visão geral · CTI Escuta</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="css/cti.css">
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <a class="brand" href="login.html">
+      <span class="brand-mark"><svg class="i lg" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22z"/></svg></span>
+      <span class="brand-name">CTI<span>escuta</span><i></i></span>
+    </a>
+    <div class="nav-label">Espaço gestor</div>
+    <nav class="nav" aria-label="Menu principal">
+      <a class="active" href="gestor-dashboard.html"><svg class="i" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg>Visão geral</a>
+      <a href="gestor-tendencias.html"><svg class="i" viewBox="0 0 24 24"><path d="m22 7-8.5 8.5-5-5L2 17"/><path d="M16 7h6v6"/></svg>Indicadores e tendências</a>
+      <a href="gestor-equipes.html"><svg class="i" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>Comparação entre equipes</a>
+      <a href="gestor-relatorios.html"><svg class="i" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8"/></svg>Relatórios</a>
+    </nav>
+    <div class="sidebar-foot">
+      <div class="help-card"><strong>Vamos ouvir melhor?</strong><p>Feedbacks são o começo de uma boa conexão.</p></div>
+      <div class="identity-note">Projeto SENAI · Identidade provisória. Marca oficial pendente de validação.</div>
+      <div class="user-card">
+        <div class="avatar">H</div>
+        <div class="who"><strong>Helena Albuquerque</strong><small>Gestor</small></div>
+        <a class="logout" href="login.html" aria-label="Sair da conta"><svg class="i" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5M21 12H9"/></svg></a>
+      </div>
+    </div>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <div class="crumbs">Plataforma de experiência <span>/</span> <strong>Gestor</strong></div>
+      <div class="topbar-right"><span class="env-pill">Ambiente acadêmico</span><div class="avatar sm">H</div></div>
+    </header>
+
+    <main class="content">
+      <div class="page-head">
+        <div>
+          <div class="eyebrow">Ouvir. Entender. Evoluir.</div>
+          <h1>Visão geral<span class="accent">.</span></h1>
+          <p>Transforme a voz dos clientes em decisões com propósito.</p>
+        </div>
+        <span class="date-pill"><svg class="i sm" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>30 de outubro de 2026</span>
+      </div>
+
+      <div class="banner"><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg><div><strong>Modo de demonstração.</strong> Análises por regras locais, sem IA. A base inicial contém dados fictícios.</div></div>
+
+      <div class="toolbar">
+        <div><h2>A experiência em perspectiva</h2><p>Indicadores calculados a partir dos registros do banco.</p></div>
+        <a class="btn secondary" href="#"><svg class="i sm" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5M12 15V3"/></svg>Exportar CSV</a>
+      </div>
+      <form class="filters" aria-label="Filtros">
+        <div class="field"><label>De</label><div class="input placeholder">dd/mm/aaaa</div></div>
+        <div class="field"><label>Até</label><div class="input placeholder">dd/mm/aaaa</div></div>
+        <div class="field"><label>Canal</label><div class="select">Todos <svg class="i sm" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></div></div>
+        <div class="field"><label>Origem</label><div class="select">Todas <svg class="i sm" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></div></div>
+        <div class="field"><label>Sentimento</label><div class="select">Todos <svg class="i sm" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></div></div>
+        <div class="field"><label>Assunto</label><div class="input placeholder">Buscar</div></div>
+        <div class="field"><label>Criticidade</label><div class="select">Todas <svg class="i sm" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></div></div>
+        <a class="btn secondary" href="#">Aplicar filtros <svg class="i sm" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+      </form>
+      <div class="stats">
+        <div class="stat"><span class="stat-icon"><svg class="i" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 13h5"/></svg></span><div class="stat-label">Feedbacks recebidos</div><div class="stat-value num">60</div><div class="stat-note"><strong>11</strong> aguardando análise</div></div>
+        <div class="stat"><span class="stat-icon"><svg class="i" viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></span><div class="stat-label">Feedbacks analisados</div><div class="stat-value num">49</div><div class="stat-note">Classificação concluída</div></div>
+        <div class="stat"><span class="stat-icon"><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/></svg></span><div class="stat-label">Sentimentos positivos</div><div class="stat-value num">43%</div><div class="stat-note">21 de 49 analisados</div></div>
+        <div class="stat warm"><span class="stat-icon"><svg class="i" viewBox="0 0 24 24"><path d="m21.7 18-8-14a2 2 0 0 0-3.4 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.7-3z"/><path d="M12 9v4M12 17h.01"/></svg></span><div class="stat-label">Casos críticos</div><div class="stat-value num">9</div><div class="stat-note"><strong>4</strong> aguardando avaliação</div></div>
+      </div>
+      <div class="grid-2" style="margin-bottom:20px">
+        <section class="card">
+          <div class="card-head"><div><h2>Evolução dos sentimentos</h2><p>A voz dos clientes ao longo do período</p></div></div>
+          <div class="card-body">
+            <div class="chart" role="img" aria-label="Evolução dos sentimentos nos últimos 14 dias">
+              <div class="col"><div class="seg negativo" style="height:9%"></div><div class="seg neutro" style="height:11%"></div><div class="seg positivo" style="height:32%"></div></div>
+              <div class="col"><div class="seg negativo" style="height:14%"></div><div class="seg neutro" style="height:9%"></div><div class="seg positivo" style="height:22%"></div></div>
+              <div class="col"><div class="seg negativo" style="height:12%"></div><div class="seg neutro" style="height:10%"></div><div class="seg positivo" style="height:31%"></div></div>
+              <div class="col"><div class="seg negativo" style="height:13%"></div><div class="seg neutro" style="height:9%"></div><div class="seg positivo" style="height:36%"></div></div>
+              <div class="col"><div class="seg negativo" style="height:7%"></div><div class="seg neutro" style="height:9%"></div><div class="seg positivo" style="height:22%"></div></div>
+              <div class="col"><div class="seg negativo" style="height:10%"></div><div class="seg neutro" style="height:15%"></div><div class="seg positivo" style="height:22%"></div></div>
+              <div class="col"><div class="seg negativo" style="height:7%"></div><div class="seg neutro" style="height:10%"></div><div class="seg positivo" style="height:37%"></div></div>
+              <div class="col"><div class="seg negativo" style="height:10%"></div><div class="seg neutro" style="height:9%"></div><div class="seg positivo" style="height:38%"></div></div>
+              <div class="col"><div class="seg negativo" style="height:5%"></div><div class="seg neutro" style="height:12%"></div><div class="seg positivo" style="height:40%"></div></div>
+              <div class="col"><div class="seg negativo" style="height:14%"></div><div class="seg neutro" style="height:18%"></div><div class="seg positivo" style="height:21%"></div></div>
+              <div class="col"><div class="seg negativo" style="height:13%"></div><div class="seg neutro" style="height:18%"></div><div class="seg positivo" style="height:32%"></div></div>
+              <div class="col"><div class="seg negativo" style="height:4%"></div><div class="seg neutro" style="height:12%"></div><div class="seg positivo" style="height:21%"></div></div>
+              <div class="col"><div class="seg negativo" style="height:12%"></div><div class="seg neutro" style="height:11%"></div><div class="seg positivo" style="height:29%"></div></div>
+              <div class="col"><div class="seg negativo" style="height:10%"></div><div class="seg neutro" style="height:11%"></div><div class="seg positivo" style="height:37%"></div></div>
+            </div>
+            <div class="chart-axis"><span>17/10/2026</span><span>30/10/2026</span></div>
+            <div class="legend"><span><i class="dot positivo"></i>Positivo</span><span><i class="dot neutro"></i>Neutro</span><span><i class="dot negativo"></i>Negativo</span></div>
+          </div>
+        </section>
+        <section class="card">
+          <div class="card-head"><div><h2>Distribuição de sentimentos</h2><p>Classificações dos feedbacks analisados</p></div></div>
+          <div class="card-body">
+            <div class="donut-wrap">
+              <div class="donut">
+                <svg viewBox="0 0 100 100" aria-hidden="true">
+                  <circle cx="50" cy="50" r="40" fill="none" stroke="#edf1f6" stroke-width="10"/>
+                  <circle cx="50" cy="50" r="40" fill="none" stroke="#5FA67E" stroke-width="10" pathLength="100" stroke-dasharray="42.9 57.1" stroke-dashoffset="0"/>
+                  <circle cx="50" cy="50" r="40" fill="none" stroke="#E3CF84" stroke-width="10" pathLength="100" stroke-dasharray="34.7 65.3" stroke-dashoffset="-42.9"/>
+                  <circle cx="50" cy="50" r="40" fill="none" stroke="#DE9B84" stroke-width="10" pathLength="100" stroke-dasharray="22.4 77.6" stroke-dashoffset="-77.6"/>
+                </svg>
+                <div class="donut-center"><strong class="num">49</strong><small>analisados</small></div>
+              </div>
+              <div class="s-rows">
+                <div class="s-row"><span><i class="dot positivo"></i>positivo</span><strong class="num">43% <small class="muted" style="font-weight:400">(21)</small></strong></div>
+                <div class="s-row"><span><i class="dot neutro"></i>neutro</span><strong class="num">35% <small class="muted" style="font-weight:400">(17)</small></strong></div>
+                <div class="s-row"><span><i class="dot negativo"></i>negativo</span><strong class="num">22% <small class="muted" style="font-weight:400">(11)</small></strong></div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div class="grid-2e">
+        <section class="card">
+          <div class="card-head"><div><h2>Assuntos que mais aparecem</h2><p>Temas identificados nas análises</p></div></div>
+          <div class="card-body">
+            <div class="topic"><div class="topic-top"><span>Tempo de resposta</span><span class="num">17 feedbacks</span></div><div class="bar"><i style="width:100%"></i></div></div>
+            <div class="topic"><div class="topic-top"><span>Qualidade do atendimento</span><span class="num">13 feedbacks</span></div><div class="bar"><i style="width:76%"></i></div></div>
+            <div class="topic"><div class="topic-top"><span>Instabilidade da conexão</span><span class="num">11 feedbacks</span></div><div class="bar"><i style="width:65%"></i></div></div>
+            <div class="topic"><div class="topic-top"><span>Clareza das informações</span><span class="num">8 feedbacks</span></div><div class="bar"><i style="width:47%"></i></div></div>
+            <div class="topic"><div class="topic-top"><span>Resolução no primeiro contato</span><span class="num">6 feedbacks</span></div><div class="bar"><i style="width:35%"></i></div></div>
+          </div>
+        </section>
+        <section class="card">
+          <div class="card-head"><div><h2>Atenção que vira cuidado</h2><p>Acompanhe a resolução dos casos críticos</p></div></div>
+          <div class="card-body">
+            <div class="mini-stats">
+              <div class="mini"><strong class="num">3</strong><span>aberto</span></div>
+              <div class="mini"><strong class="num">1</strong><span>em andamento</span></div>
+              <div class="mini"><strong class="num">5</strong><span>resolvido</span></div>
+            </div>
+            <div class="insight"><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg><div>Sinais automáticos precisam de avaliação humana. Sentimento negativo, por si só, não determina alta criticidade.</div></div>
+          </div>
+        </section>
+      </div>
+
+      <div class="toolbar">
+        <div><h2>Conexões entre equipes</h2><p>Visão agregada das equipes demonstrativas, sem dados pessoais.</p></div>
+        <a class="link" href="gestor-equipes.html">Ver comparação <svg class="i sm" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </div>
+      <section class="card">
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th scope="col">Equipe</th><th scope="col">Recebidos</th><th scope="col">Analisados</th><th scope="col">Positivos</th><th scope="col">Críticos</th><th scope="col">Resolvidos</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Conectividade</strong><small>Rede, links e telefonia</small></td><td class="num">34</td><td class="num">28</td><td class="num">14</td><td><span class="tag critical">5</span></td><td><span class="tag resolvido">3</span></td></tr>
+                <tr><td><strong>Cloud e segurança</strong><small>Nuvem, infraestrutura e proteção</small></td><td class="num">26</td><td class="num">21</td><td class="num">7</td><td><span class="tag critical">4</span></td><td><span class="tag resolvido">2</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+      </section>
+
+
+      <footer class="content-foot"><span>CTI Escuta · Cada voz, uma oportunidade.</span><span>Conectividade / Segurança / Cloud</span></footer>
+    </main>
+  </div>
+</div>
+</body>
+</html>

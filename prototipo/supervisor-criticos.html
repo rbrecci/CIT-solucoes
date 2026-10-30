@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Casos críticos · CTI Escuta</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="css/cti.css">
+<style>tbody td:nth-child(2){min-width:190px}th,td{padding-left:16px;padding-right:16px}th:first-child,td:first-child{padding-left:24px}th:last-child,td:last-child{padding-right:24px}</style>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <a class="brand" href="login.html">
+      <span class="brand-mark"><svg class="i lg" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22z"/></svg></span>
+      <span class="brand-name">CTI<span>escuta</span><i></i></span>
+    </a>
+    <div class="nav-label">Espaço supervisor</div>
+    <nav class="nav" aria-label="Menu principal">
+      <a href="supervisor-dashboard.html"><svg class="i" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg>Dashboard da equipe</a>
+      <a href="supervisor-atendimentos.html"><svg class="i" viewBox="0 0 24 24"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M9 12h6M9 16h6"/></svg>Atendimentos da equipe</a>
+      <a href="supervisor-feedbacks.html"><svg class="i" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 13h5"/></svg>Feedbacks da equipe</a>
+      <a class="active" href="supervisor-criticos.html"><svg class="i" viewBox="0 0 24 24"><path d="m21.7 18-8-14a2 2 0 0 0-3.4 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.7-3z"/><path d="M12 9v4M12 17h.01"/></svg>Casos críticos<span class="dot" aria-label="Casos para acompanhar"></span></a>
+    </nav>
+    <div class="sidebar-foot">
+      <div class="help-card"><strong>Vamos ouvir melhor?</strong><p>Feedbacks são o começo de uma boa conexão.</p></div>
+      <div class="identity-note">Projeto SENAI · Identidade provisória. Marca oficial pendente de validação.</div>
+      <div class="user-card">
+        <div class="avatar">M</div>
+        <div class="who"><strong>Marina Duarte</strong><small>Supervisor</small></div>
+        <a class="logout" href="login.html" aria-label="Sair da conta"><svg class="i" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5M21 12H9"/></svg></a>
+      </div>
+    </div>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <div class="crumbs">Plataforma de experiência <span>/</span> <strong>Supervisor</strong></div>
+      <div class="topbar-right"><span class="env-pill">Ambiente acadêmico</span><div class="avatar sm">M</div></div>
+    </header>
+
+    <main class="content">
+      <div class="page-head">
+        <div>
+          <div class="eyebrow">Ouvir. Entender. Evoluir.</div>
+          <h1>Casos críticos<span class="accent">.</span></h1>
+          <p>Uma visão clara para cuidar de cada conexão da sua equipe.</p>
+        </div>
+        <span class="date-pill"><svg class="i sm" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>30 de outubro de 2026</span>
+      </div>
+
+      <div class="banner"><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg><div><strong>Modo de demonstração.</strong> Análises por regras locais, sem IA. A base inicial contém dados fictícios.</div></div>
+
+      <form class="filters">
+        <div class="field"><label>De</label><div class="input placeholder">dd/mm/aaaa</div></div>
+        <div class="field"><label>Até</label><div class="input placeholder">dd/mm/aaaa</div></div>
+        <div class="field"><label>Cliente</label><div class="select">Todos <svg class="i sm" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></div></div>
+        <div class="field"><label>Atendente</label><div class="select">Todos <svg class="i sm" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></div></div>
+        <div class="field"><label>Canal</label><div class="select">Todos <svg class="i sm" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></div></div>
+        <div class="field"><label>Origem</label><div class="select">Todas <svg class="i sm" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></div></div>
+        <div class="field"><label>Sentimento</label><div class="select">Todos <svg class="i sm" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></div></div>
+        <div class="field"><label>Criticidade</label><div class="select">Todas <svg class="i sm" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></div></div>
+        <a class="btn secondary" href="#">Aplicar filtros <svg class="i sm" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+      </form>
+
+      <div class="insight" style="margin-bottom:4px"><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg><div>Sinais automáticos precisam de avaliação humana. Sentimento negativo, por si só, não determina alta criticidade. Revise cada caso antes de confirmar a classificação.</div></div>
+      <div class="toolbar"><div><h2>Um olhar atento faz a diferença</h2><p>5 registros no seu escopo de acesso</p></div></div>
+      <section class="card">
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Feedback</th><th>Atendimento</th><th>Sentimento</th><th>Criticidade</th><th>Origem</th><th>Recebido em</th><th>Ação</th></tr></thead>
+            <tbody>
+              <tr><td style="white-space:nowrap"><strong class="num">FB-2026-0187</strong><small>Orbita Logística</small></td><td><strong>Queda intermitente no link dedicado</strong><small>Rafael Souza</small></td><td><span class="tag negativo">Negativo</span></td><td><span class="tag critical">Crítico · Em andamento</span></td><td>Áudio</td><td class="num" style="white-space:nowrap">29/10/2026 16:42</td><td style="white-space:nowrap"><a class="link" href="supervisor-feedback-revisao.html">Ver detalhes <svg class="i sm" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></td></tr>
+              <tr><td style="white-space:nowrap"><strong class="num">FB-2026-0179</strong><small>Clínica Vida Plena</small></td><td><strong>Falha na VPN de acesso ao prontuário</strong><small>Camila Torres</small></td><td><span class="tag negativo">Negativo</span></td><td><span class="tag critical">Crítico · Aberto</span></td><td>Áudio</td><td class="num" style="white-space:nowrap">28/10/2026 09:48</td><td style="white-space:nowrap"><a class="link" href="#">Ver detalhes <svg class="i sm" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></td></tr>
+              <tr><td style="white-space:nowrap"><strong class="num">FB-2026-0171</strong><small>Grupo Aurora</small></td><td><strong>Bloqueio indevido de firewall em produção</strong><small>Bruno Ferraz</small></td><td><span class="tag negativo">Negativo</span></td><td><span class="tag critical">Crítico · Aberto</span></td><td>Áudio</td><td class="num" style="white-space:nowrap">24/10/2026 18:03</td><td style="white-space:nowrap"><a class="link" href="#">Ver detalhes <svg class="i sm" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></td></tr>
+              <tr><td style="white-space:nowrap"><strong class="num">FB-2026-0163</strong><small>Mercadão Central</small></td><td><strong>Lentidão no backup em nuvem</strong><small>Letícia Almeida</small></td><td><span class="tag negativo">Negativo</span></td><td><span class="tag critical">Crítico · Aberto</span></td><td>Texto</td><td class="num" style="white-space:nowrap">23/10/2026 15:26</td><td style="white-space:nowrap"><a class="link" href="#">Ver detalhes <svg class="i sm" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></td></tr>
+              <tr><td style="white-space:nowrap"><strong class="num">FB-2026-0152</strong><small>Transportes Viaverde</small></td><td><strong>Certificado SSL expirado no portal</strong><small>Diego Martins</small></td><td><span class="tag negativo">Negativo</span></td><td><span class="tag critical">Crítico · Resolvido</span></td><td>Áudio</td><td class="num" style="white-space:nowrap">20/10/2026 10:34</td><td style="white-space:nowrap"><a class="link" href="#">Ver detalhes <svg class="i sm" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <footer class="content-foot"><span>CTI Escuta · Cada voz, uma oportunidade.</span><span>Conectividade / Segurança / Cloud</span></footer>
+    </main>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Meus feedbacks · CTI Escuta</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="css/cti.css">
+<style>tbody td:nth-child(2){min-width:190px}</style>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <a class="brand" href="login.html">
+      <span class="brand-mark"><svg class="i lg" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22z"/></svg></span>
+      <span class="brand-name">CTI<span>escuta</span><i></i></span>
+    </a>
+    <div class="nav-label">Espaço cliente</div>
+    <nav class="nav" aria-label="Menu principal">
+      <a href="cliente-atendimentos.html"><svg class="i" viewBox="0 0 24 24"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M9 12h6M9 16h6"/></svg>Meus atendimentos</a>
+      <a href="cliente-enviar.html"><svg class="i" viewBox="0 0 24 24"><path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/></svg>Enviar feedback</a>
+      <a class="active" href="cliente-feedbacks.html"><svg class="i" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 13h5"/></svg>Meus feedbacks</a>
+    </nav>
+    <div class="sidebar-foot">
+      <div class="help-card"><strong>Vamos ouvir melhor?</strong><p>Feedbacks são o começo de uma boa conexão.</p></div>
+      <div class="identity-note">Projeto SENAI · Identidade provisória. Marca oficial pendente de validação.</div>
+      <div class="user-card">
+        <div class="avatar">L</div>
+        <div class="who"><strong>Lucas Ferreira</strong><small>Cliente</small></div>
+        <a class="logout" href="login.html" aria-label="Sair da conta"><svg class="i" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5M21 12H9"/></svg></a>
+      </div>
+    </div>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <div class="crumbs">Plataforma de experiência <span>/</span> <strong>Cliente</strong></div>
+      <div class="topbar-right"><span class="env-pill">Ambiente acadêmico</span><div class="avatar sm">L</div></div>
+    </header>
+
+    <main class="content">
+      <div class="page-head">
+        <div>
+          <div class="eyebrow">Ouvir. Entender. Evoluir.</div>
+          <h1>Meus feedbacks<span class="accent">.</span></h1>
+          <p>Sua experiência importa. Estamos aqui para ouvir você.</p>
+        </div>
+      </div>
+
+      <div class="banner"><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg><div><strong>Modo de demonstração.</strong> Análises por regras locais, sem IA. A base inicial contém dados fictícios.</div></div>
+
+      <div class="toolbar" style="margin-top:0">
+        <div><h2>Cada feedback conta uma história</h2><p>4 registros no seu escopo de acesso</p></div>
+        <a class="btn primary" href="cliente-enviar.html"><svg class="i sm" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>Enviar feedback</a>
+      </div>
+      <div class="card">
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Feedback</th><th>Atendimento</th><th>Origem</th><th>Recebido em</th><th>Ação</th></tr></thead>
+            <tbody>
+            <tr>
+              <td><strong class="num">FDB-2026-0031</strong><small>O atendimento do Bruno foi rápido e muito claro.…</small></td>
+              <td>Bloqueio de acesso à VPN corporativa</td>
+              <td>Texto</td>
+              <td class="num">30/10/2026</td>
+              <td><a class="link" href="cliente-feedback-detalhe.html">Ver detalhes <svg class="i sm" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></td>
+            </tr>
+            <tr>
+              <td><strong class="num">FDB-2026-0027</strong><small>Demorou para responder no início, mas a solução…</small></td>
+              <td>Instabilidade na conexão do link dedicado</td>
+              <td>Áudio gravado</td>
+              <td class="num">05/10/2026</td>
+              <td><a class="link" href="cliente-feedback-detalhe.html">Ver detalhes <svg class="i sm" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></td>
+            </tr>
+            <tr>
+              <td><strong class="num">FDB-2026-0022</strong><small>A equipe explicou cada etapa da migração com pac…</small></td>
+              <td>Migração de servidores para a nuvem</td>
+              <td>Áudio anexado</td>
+              <td class="num">12/10/2026</td>
+              <td><a class="link" href="cliente-feedback-detalhe.html">Ver detalhes <svg class="i sm" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></td>
+            </tr>
+            <tr>
+              <td><strong class="num">FDB-2026-0018</strong><small>Gostei das orientações, porém precisei repetir o…</small></td>
+              <td>Revisão das regras de firewall</td>
+              <td>Texto</td>
+              <td class="num">22/10/2026</td>
+              <td><a class="link" href="cliente-feedback-detalhe.html">Ver detalhes <svg class="i sm" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <footer class="content-foot"><span>CTI Escuta · Cada voz, uma oportunidade.</span><span>Conectividade / Segurança / Cloud</span></footer>
+    </main>
+  </div>
+</div>
+<div class="scrim" role="dialog" aria-modal="true" aria-labelledby="dlg-title">
+  <div class="dialog">
+    <div class="eyebrow">FDB-2026-0027</div>
+    <h2 id="dlg-title">Instabilidade na conexão do link dedicado</h2>
+    <div class="meta"><span class="num">05/10/2026</span> · Áudio gravado · somente texto conservado</div>
+    <div class="quote">Demorou para responder no início, mas a solução veio no mesmo dia e resolveu tudo. O Rafael foi atencioso e me manteve informado até a conexão voltar ao normal. Só gostaria que o primeiro retorno tivesse sido mais rápido.</div>
+    <div class="dialog-actions"><a class="btn secondary" href="cliente-feedbacks.html">Fechar</a></div>
+  </div>
+</div>
+</body>
+</html>

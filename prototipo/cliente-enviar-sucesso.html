@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Enviar feedback · CTI Escuta</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="css/cti.css">
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <a class="brand" href="login.html">
+      <span class="brand-mark"><svg class="i lg" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22z"/></svg></span>
+      <span class="brand-name">CTI<span>escuta</span><i></i></span>
+    </a>
+    <div class="nav-label">Espaço cliente</div>
+    <nav class="nav" aria-label="Menu principal">
+      <a href="cliente-atendimentos.html"><svg class="i" viewBox="0 0 24 24"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M9 12h6M9 16h6"/></svg>Meus atendimentos</a>
+      <a class="active" href="cliente-enviar.html"><svg class="i" viewBox="0 0 24 24"><path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/></svg>Enviar feedback</a>
+      <a href="cliente-feedbacks.html"><svg class="i" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 13h5"/></svg>Meus feedbacks</a>
+    </nav>
+    <div class="sidebar-foot">
+      <div class="help-card"><strong>Vamos ouvir melhor?</strong><p>Feedbacks são o começo de uma boa conexão.</p></div>
+      <div class="identity-note">Projeto SENAI · Identidade provisória. Marca oficial pendente de validação.</div>
+      <div class="user-card">
+        <div class="avatar">L</div>
+        <div class="who"><strong>Lucas Ferreira</strong><small>Cliente</small></div>
+        <a class="logout" href="login.html" aria-label="Sair da conta"><svg class="i" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5M21 12H9"/></svg></a>
+      </div>
+    </div>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <div class="crumbs">Plataforma de experiência <span>/</span> <strong>Cliente</strong></div>
+      <div class="topbar-right"><span class="env-pill">Ambiente acadêmico</span><div class="avatar sm">L</div></div>
+    </header>
+
+    <main class="content">
+      <div class="page-head">
+        <div>
+          <div class="eyebrow">Ouvir. Entender. Evoluir.</div>
+          <h1>Enviar feedback<span class="accent">.</span></h1>
+          <p>Sua experiência importa. Estamos aqui para ouvir você.</p>
+        </div>
+      </div>
+
+      <div class="notice"><svg class="i" viewBox="0 0 24 24"><path d="m20 6-11 11-5-5"/></svg><div>Envio confirmado. Somente seu texto foi registrado.</div></div>
+
+      <section class="card" style="max-width:640px;margin:0 auto">
+        <div class="empty" style="padding:56px 40px">
+          <div class="ico" style="width:72px;height:72px;border-radius:50%;background:var(--brand-100);color:var(--brand-600)"><svg class="i lg" viewBox="0 0 24 24"><path d="m20 6-11 11-5-5"/></svg></div>
+          <div class="eyebrow" style="margin-bottom:8px">Feedback recebido</div>
+          <h2 style="font-size:24px;font-weight:700;letter-spacing:-.6px;color:var(--ink-900);margin-bottom:20px">Obrigado por compartilhar sua experiência.</h2>
+          <div style="display:inline-block;background:var(--brand-50);border:1px solid #cfe0f7;border-radius:12px;padding:12px 24px;margin-bottom:28px">
+            <div class="muted" style="font-size:12px">Protocolo</div>
+            <strong class="num" style="display:block;font-size:22px;letter-spacing:-.4px;color:var(--brand-700)">FDB-2026-0031</strong>
+          </div>
+          <div><a class="btn primary" href="cliente-feedbacks.html">Ver meus feedbacks <svg class="i sm" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
+        </div>
+      </section>
+
+      <footer class="content-foot"><span>CTI Escuta · Cada voz, uma oportunidade.</span><span>Conectividade / Segurança / Cloud</span></footer>
+    </main>
+  </div>
+</div>
+</body>
+</html>

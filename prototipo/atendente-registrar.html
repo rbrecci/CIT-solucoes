@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Registrar atendimento · CTI Escuta</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="css/cti.css">
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <a class="brand" href="login.html">
+      <span class="brand-mark"><svg class="i lg" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22z"/></svg></span>
+      <span class="brand-name">CTI<span>escuta</span><i></i></span>
+    </a>
+    <div class="nav-label">Espaço atendente</div>
+    <nav class="nav" aria-label="Menu principal">
+      <a href="atendente-atendimentos.html"><svg class="i" viewBox="0 0 24 24"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M9 12h6M9 16h6"/></svg>Meus atendimentos</a>
+      <a class="active" href="atendente-registrar.html"><svg class="i" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>Registrar atendimento</a>
+      <a href="atendente-feedbacks.html"><svg class="i" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 13h5"/></svg>Feedbacks dos meus atendimentos</a>
+    </nav>
+    <div class="sidebar-foot">
+      <div class="help-card"><strong>Vamos ouvir melhor?</strong><p>Feedbacks são o começo de uma boa conexão.</p></div>
+      <div class="identity-note">Projeto SENAI · Identidade provisória. Marca oficial pendente de validação.</div>
+      <div class="user-card">
+        <div class="avatar">R</div>
+        <div class="who"><strong>Rafael Moreira</strong><small>Atendente</small></div>
+        <a class="logout" href="login.html" aria-label="Sair da conta"><svg class="i" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5M21 12H9"/></svg></a>
+      </div>
+    </div>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <div class="crumbs">Plataforma de experiência <span>/</span> <strong>Atendente</strong></div>
+      <div class="topbar-right"><span class="env-pill">Ambiente acadêmico</span><div class="avatar sm">R</div></div>
+    </header>
+
+    <main class="content">
+      <div class="page-head">
+        <div>
+          <div class="eyebrow">Ouvir. Entender. Evoluir.</div>
+          <h1>Registrar atendimento<span class="accent">.</span></h1>
+          <p>Cada atendimento é uma oportunidade de fazer a diferença.</p>
+        </div>
+      </div>
+
+      <div class="banner"><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg><div><strong>Modo de demonstração.</strong> Análises por regras locais, sem IA. A base inicial contém dados fictícios.</div></div>
+
+      <div class="notice" role="status"><svg class="i" viewBox="0 0 24 24"><path d="m20 6-11 11-5-5"/></svg><div>Atendimento registrado. Protocolo: <strong>ATD-2026-0034</strong></div></div>
+
+      <section class="card form-card">
+        <div class="card-body">
+          <h2 style="font-size:22px;font-weight:700;letter-spacing:-.6px">Uma nova conversa começa aqui.</h2>
+          <p class="muted" style="margin:6px 0 26px">Vincule o atendimento a um cliente. Você será o atendente responsável.</p>
+
+          <form>
+            <div class="form-section">
+              <div class="field">
+                <label id="lbl-cliente">Cliente</label>
+                <div class="select" role="combobox" aria-labelledby="lbl-cliente" aria-expanded="false">Grupo Aurora Logística <svg class="i sm" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></div>
+              </div>
+            </div>
+            <div class="form-section">
+              <div class="field">
+                <label id="lbl-assunto">Assunto</label>
+                <div class="input" role="textbox" aria-labelledby="lbl-assunto">Instabilidade na VPN site a site entre matriz e filial</div>
+                <div class="hint">Descreva em poucas palavras o motivo do contato.</div>
+              </div>
+            </div>
+            <div class="form-section" style="margin-bottom:0">
+              <div class="field">
+                <label id="lbl-canal">Canal</label>
+                <div class="select" role="combobox" aria-labelledby="lbl-canal" aria-expanded="false">Portal <svg class="i sm" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></div>
+              </div>
+            </div>
+            <div class="form-actions">
+              <small>Registrado na sua equipe.</small>
+              <a class="btn primary" href="atendente-atendimentos.html">Registrar atendimento <svg class="i sm" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <footer class="content-foot"><span>CTI Escuta · Cada voz, uma oportunidade.</span><span>Conectividade / Segurança / Cloud</span></footer>
+    </main>
+  </div>
+</div>
+</body>
+</html>
