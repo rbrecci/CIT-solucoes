@@ -5,11 +5,13 @@ from pathlib import Path
 import sqlite3
 import time
 import wave
+from datetime import datetime, timedelta, timezone
 import pytest
 from app import create_app, initialize, seed
 from app.services import ServiceError
 
 PASSWORD='TestOnly!2026'
+SOLUTION='Reiniciei o roteador remotamente e confirmei o sinal.'
 
 @pytest.fixture(scope='module')
 def prepared(tmp_path_factory):
@@ -156,7 +158,7 @@ def test_agent_operations(client):
     assert client.post('/api/tickets',json={**data,'agent_id':6},headers=headers).status_code==400
     response=client.post('/api/tickets',json=data,headers=headers)
     assert response.status_code==201
-    assert client.patch('/api/tickets/'+str(response.json['id']),json={'status':'resolvido'},headers=headers).status_code==200
+    assert client.patch('/api/tickets/'+str(response.json['id']),json={'status':'resolvido','solution':SOLUTION},headers=headers).status_code==200
     assert client.patch('/api/tickets/3',json={'status':'resolvido'},headers=headers).status_code==404
     assert client.patch('/api/tickets/5',json={'status':'resolvido'},headers=headers).status_code==404
 
@@ -197,3 +199,78 @@ def test_invalid_identifiers_are_rejected(client,value):
     headers=login(client)
     response=client.post('/api/feedbacks',json={'ticket_id':value,'text':'Texto válido.','origin':'texto','confirmed':True},headers=headers)
     assert response.status_code==400
+
+def new_ticket(client,headers,**extra):
+    response=client.post('/api/tickets',json={'client_id':1,'subject':'Fluxo de teste','channel':'portal',**extra},headers=headers)
+    assert response.status_code==201
+    return response.json['id']
+
+def ticket_row(app,tid):
+    with sqlite3.connect(app.config['DATABASE']) as connection:
+        connection.row_factory=sqlite3.Row
+        return dict(connection.execute('SELECT * FROM tickets WHERE id=?',(tid,)).fetchone())
+
+def set_ticket(app,tid,**fields):
+    with sqlite3.connect(app.config['DATABASE']) as connection:
+        for column,value in fields.items(): connection.execute(f'UPDATE tickets SET {column}=? WHERE id=?',(value,tid))
+
+def ago(**delta): return (datetime.now(timezone.utc)-timedelta(**delta)).isoformat(timespec='seconds')
+
+def test_resolve_needs_solution_and_happens_once(client,prepared):
+    headers=login(client,'atendente'); tid=new_ticket(client,headers); url=f'/api/tickets/{tid}'
+    assert client.patch(url,json={'status':'resolvido'},headers=headers).status_code==400
+    assert client.patch(url,json={'status':'resolvido','solution':'curto'},headers=headers).status_code==400
+    for status in ['aberto','em andamento','encerrado']:
+        assert client.patch(url,json={'status':status,'solution':SOLUTION},headers=headers).status_code==400
+    assert client.patch(url,json={'status':'resolvido','solution':SOLUTION},headers=headers).status_code==200
+    row=ticket_row(prepared,tid)
+    assert row['status']=='resolvido' and row['solution']==SOLUTION and row['resolved_at']
+    assert client.patch(url,json={'status':'resolvido','solution':SOLUTION+' 2'},headers=headers).status_code==409
+
+def test_register_ticket_already_resolved(client,prepared):
+    headers=login(client,'atendente')
+    row=ticket_row(prepared,new_ticket(client,headers,solution=SOLUTION))
+    assert row['status']=='resolvido' and row['solution']==SOLUTION and row['resolved_at']
+    response=client.post('/api/tickets',json={'client_id':1,'subject':'Fluxo de teste','channel':'portal','solution':'curto'},headers=headers)
+    assert response.status_code==400
+
+def test_client_confirmation_closes_or_reopens(client,prepared):
+    agent=login(client,'atendente')
+    closes,reopens,unresolved=(new_ticket(client,agent,solution=SOLUTION),new_ticket(client,agent,solution=SOLUTION),new_ticket(client,agent))
+    headers=login(client,'cliente')
+    assert client.post(f'/api/tickets/{closes}/confirm',json={'outcome':'resolveu'},headers=headers).status_code==200
+    row=ticket_row(prepared,closes)
+    assert row['status']=='encerrado' and row['closed_at']
+    assert client.post(f'/api/tickets/{reopens}/confirm',json={'outcome':'nao_resolveu'},headers=headers).status_code==200
+    row=ticket_row(prepared,reopens)
+    assert row['status']=='aberto' and row['solution'] is None and row['resolved_at'] is None
+    assert client.post(f'/api/tickets/{unresolved}/confirm',json={'outcome':'resolveu'},headers=headers).status_code==409
+    assert client.post(f'/api/tickets/{closes}/confirm',json={'outcome':'resolveu'},headers=headers).status_code==409
+    assert client.post(f'/api/tickets/{closes}/confirm',json={'outcome':'talvez'},headers=headers).status_code==400
+    assert client.post('/api/tickets/3/confirm',json={'outcome':'resolveu'},headers=headers).status_code==404
+    agent=login(client,'atendente')
+    assert client.post(f'/api/tickets/{reopens}/confirm',json={'outcome':'resolveu'},headers=agent).status_code==403
+
+def test_unanswered_resolution_closes_after_three_days(client,prepared):
+    headers=login(client,'atendente')
+    old,recent=new_ticket(client,headers,solution=SOLUTION),new_ticket(client,headers,solution=SOLUTION)
+    set_ticket(prepared,old,resolved_at=ago(days=4)); set_ticket(prepared,recent,resolved_at=ago(days=2))
+    assert prepared.test_cli_runner().invoke(args=['cleanup-audio']).exit_code==0
+    row=ticket_row(prepared,old)
+    assert row['status']=='encerrado' and row['closed_at']
+    assert ticket_row(prepared,recent)['status']=='resolvido'
+
+def test_response_deadline_marks_overdue(client,prepared):
+    headers=login(client,'atendente')
+    late,fresh,done=new_ticket(client,headers),new_ticket(client,headers),new_ticket(client,headers,solution=SOLUTION)
+    set_ticket(prepared,late,created=ago(hours=25)); set_ticket(prepared,done,created=ago(hours=25))
+    rows={r['id']:r for r in client.get('/api/tickets').json}
+    assert rows[late]['overdue'] is True and rows[fresh]['overdue'] is False and rows[done]['overdue'] is False
+    assert datetime.fromisoformat(rows[late]['due_at'])==datetime.fromisoformat(rows[late]['created'])+timedelta(hours=24)
+
+def test_seeded_tickets_keep_status_invariants(prepared):
+    with sqlite3.connect(prepared.config['DATABASE']) as connection:
+        rows=connection.execute("SELECT status,solution,resolved_at,closed_at FROM tickets WHERE protocol LIKE 'AT-DEMO-%'").fetchall()
+    assert rows and all(s in ('aberto','resolvido','encerrado') for s,*_ in rows)
+    assert all(sol and res for s,sol,res,_ in rows if s in ('resolvido','encerrado'))
+    assert all(closed for s,_,_,closed in rows if s=='encerrado')

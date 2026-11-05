@@ -23,6 +23,10 @@ ROLES = {
  'gestor': [('dashboard','Visão geral'),('tendencias','Indicadores e tendências'),('equipes','Comparação entre equipes'),('relatorios','Relatórios')]
 }
 
+RESPONSE_HOURS=24
+CONFIRMATION_DAYS=3
+SOLUTION_MIN,SOLUTION_MAX=10,2000
+
 def now():
     return datetime.now(timezone.utc).isoformat(timespec='seconds')
 
@@ -125,6 +129,12 @@ def create_app(test_config=None):
         if not row: abort(404)
         return dict(row)
 
+    def with_deadline(row):
+        due=datetime.fromisoformat(row['created'])+timedelta(hours=RESPONSE_HOURS)
+        row['due_at']=due.isoformat(timespec='seconds')
+        row['overdue']=row['status'] in ('aberto','em andamento') and datetime.now(timezone.utc)>due
+        return row
+
     def feedback_rows():
         cond,args=scope()
         rows=db().execute(f'''SELECT f.*,t.subject,t.channel,t.agent_id,t.team_id,c.name client_name,u.name agent_name,a.sentiment auto_sentiment,a.confidence,a.summary,a.topics,a.critical auto_critical,a.evidence,a.provider,r.sentiment reviewed_sentiment,r.critical reviewed_critical,r.status case_status,r.action,r.responsible_id,r.justification,r.created reviewed_at,r.author_id
@@ -212,11 +222,11 @@ def create_app(test_config=None):
     def tickets():
         cond,args=scope()
         rows=db().execute(f'SELECT t.*,c.name client_name,u.name agent_name FROM tickets t JOIN users c ON c.id=t.client_id JOIN users u ON u.id=t.agent_id WHERE {cond} ORDER BY t.created DESC',args).fetchall()
-        return jsonify([dict(r) for r in rows])
+        return jsonify([with_deadline(dict(r)) for r in rows])
 
     @app.get('/api/tickets/<int:ticket_id>')
     @require('cliente','atendente','supervisor')
-    def get_ticket(ticket_id): return jsonify(ticket(ticket_id))
+    def get_ticket(ticket_id): return jsonify(with_deadline(ticket(ticket_id)))
 
     @app.get('/api/options')
     @require('atendente','supervisor')
@@ -232,14 +242,16 @@ def create_app(test_config=None):
     @app.post('/api/tickets')
     @require('atendente')
     def new_ticket():
-        data=payload(['client_id','subject','channel'],['client_id','subject','channel'])
+        data=payload(['client_id','subject','channel','solution'],['client_id','subject','channel'])
         if type(data['client_id']) is not int or data['client_id']<=0: abort(400)
         client=db().execute("SELECT id FROM users WHERE id=? AND role='cliente' AND team_id=?",(data['client_id'],g.user['team_id'])).fetchone()
         if not client: abort(404)
         subject=text_value(data,'subject',3,180)
         if data['channel'] not in ['chat','telefone','email','portal']: abort(400)
+        solution=text_value(data,'solution',SOLUTION_MIN,SOLUTION_MAX) if 'solution' in data else None
         protocol='AT-'+secrets.token_hex(5).upper()
-        cursor=db().execute('INSERT INTO tickets(protocol,client_id,agent_id,team_id,subject,channel,status,created) VALUES(?,?,?,?,?,?,?,?)',(protocol,client['id'],g.user['id'],g.user['team_id'],subject,data['channel'],'aberto',now()))
+        created=now()
+        cursor=db().execute('INSERT INTO tickets(protocol,client_id,agent_id,team_id,subject,channel,status,created,solution,resolved_at) VALUES(?,?,?,?,?,?,?,?,?,?)',(protocol,client['id'],g.user['id'],g.user['team_id'],subject,data['channel'],'resolvido' if solution else 'aberto',created,solution,created if solution else None))
         db().commit()
         return jsonify(id=cursor.lastrowid,protocol=protocol),201
 
@@ -247,9 +259,26 @@ def create_app(test_config=None):
     @require('atendente')
     def edit_ticket(ticket_id):
         ticket(ticket_id)
-        data=payload(['status'],['status'])
-        if data['status'] not in ['aberto','em andamento','resolvido']: abort(400)
-        db().execute('UPDATE tickets SET status=? WHERE id=?',(data['status'],ticket_id)); db().commit()
+        data=payload(['status','solution'],['status','solution'])
+        if data['status']!='resolvido': abort(400)
+        solution=text_value(data,'solution',SOLUTION_MIN,SOLUTION_MAX)
+        changed=db().execute("UPDATE tickets SET status='resolvido',solution=?,resolved_at=? WHERE id=? AND status IN ('aberto','em andamento')",(solution,now(),ticket_id)).rowcount
+        db().commit()
+        if not changed: abort(409)
+        return jsonify(ok=True)
+
+    @app.post('/api/tickets/<int:ticket_id>/confirm')
+    @require('cliente')
+    def confirm_ticket(ticket_id):
+        ticket(ticket_id)
+        data=payload(['outcome'],['outcome'])
+        if data['outcome'] not in ['resolveu','nao_resolveu']: abort(400)
+        if data['outcome']=='resolveu':
+            changed=db().execute("UPDATE tickets SET status='encerrado',closed_at=? WHERE id=? AND status='resolvido'",(now(),ticket_id)).rowcount
+        else:
+            changed=db().execute("UPDATE tickets SET status='aberto',solution=NULL,resolved_at=NULL WHERE id=? AND status='resolvido'",(ticket_id,)).rowcount
+        db().commit()
+        if not changed: abort(409)
         return jsonify(ok=True)
 
     @app.get('/api/feedbacks')
@@ -325,6 +354,8 @@ def create_app(test_config=None):
                 path.unlink(missing_ok=True)
         db().execute('DELETE FROM drafts WHERE expires<?',(int(time.time()),))
         db().execute('DELETE FROM sessions WHERE expires<?',(int(time.time()),))
+        limit=(datetime.now(timezone.utc)-timedelta(days=CONFIRMATION_DAYS)).isoformat(timespec='seconds')
+        db().execute("UPDATE tickets SET status='encerrado',closed_at=? WHERE status='resolvido' AND resolved_at<=?",(now(),limit))
         db().commit()
 
     @app.post('/api/transcribe')
@@ -447,7 +478,10 @@ def create_app(test_config=None):
 
 def initialize(app):
     with sqlite3.connect(app.config['DATABASE']) as connection:
-        connection.executescript((Path(__file__).parent.parent/'migrations/001_initial.sql').read_text())
+        migrations=Path(__file__).parent.parent/'migrations'
+        connection.executescript((migrations/'001_initial.sql').read_text())
+        if 'solution' not in [row[1] for row in connection.execute('PRAGMA table_info(tickets)')]:
+            connection.executescript((migrations/'002_ticket_resolution.sql').read_text())
 
 
 def seed(app,password):
@@ -463,7 +497,10 @@ def seed(app,password):
             tid=index+1; other=index%3==2; alternate=index%5==4 and not other
             client,agent,team=(5,6,2) if other else (8,9,1) if alternate else (1,2,1)
             date=(datetime.now(timezone.utc)-timedelta(days=29-index)).isoformat(timespec='seconds')
-            connection.execute('INSERT INTO tickets VALUES(?,?,?,?,?,?,?,?,?)',(tid,f'AT-DEMO-{tid:04}',client,agent,team,['Conexão de internet','Ajuste de fatura','Suporte cloud'][index%3],['portal','telefone','chat','email'][index%4],['resolvido','em andamento','aberto'][index%3],date))
+            subject=['Conexão de internet','Ajuste de fatura','Suporte cloud'][index%3]
+            status='encerrado' if index%2==0 else 'resolvido' if index%6==5 else 'aberto'
+            solution={'Conexão de internet':'Reiniciei o equipamento remotamente e reconfigurei o sinal do roteador.','Ajuste de fatura':'Estornei a cobrança indevida e emiti a segunda via da fatura.','Suporte cloud':'Reabri o acesso à instância e orientei a troca da chave de segurança.'}[subject] if status!='aberto' else None
+            connection.execute('INSERT INTO tickets(id,protocol,client_id,agent_id,team_id,subject,channel,status,created,solution,resolved_at,closed_at) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)',(tid,f'AT-DEMO-{tid:04}',client,agent,team,subject,['portal','telefone','chat','email'][index%4],status,date,solution,date if solution else None,date if status=='encerrado' else None))
             text=samples[index%len(samples)]
             connection.execute('INSERT INTO feedbacks VALUES(?,?,?,?,?,?,?,?)',(tid,f'FB-DEMO-{tid:04}',tid,client,text,'texto',date,'pendente' if index%11==0 else 'analisado'))
             if index%11!=0:
