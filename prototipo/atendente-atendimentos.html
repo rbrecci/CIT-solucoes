@@ -56,28 +56,32 @@
         <a class="btn primary" href="atendente-registrar.html"><svg class="i" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>Registrar atendimento</a>
       </div>
 
+      <div class="notice error" role="status"><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg><div><strong>1 atendimento com prazo vencido</strong></div></div>
+
       <section class="card">
         <div class="table-wrap">
           <table>
-            <thead><tr><th>Protocolo</th><th>Assunto</th><th>Cliente</th><th>Canal</th><th>Status</th><th>Data</th><th><span class="sr">Ação</span></th></tr></thead>
+            <thead><tr><th>Protocolo</th><th>Assunto</th><th>Cliente</th><th>Canal</th><th>Status</th><th>Data</th><th>Responder até</th><th><span class="sr">Ação</span></th></tr></thead>
             <tbody>
             <tr>
               <td class="nw"><strong class="num">ATD-2026-0033</strong></td>
               <td>Queda intermitente no link dedicado</td>
               <td>Redecom Telecom</td>
               <td>Telefone</td>
-              <td><span class="tag andamento">Em andamento</span></td>
-              <td class="num">30/10/2026</td>
-              <td class="nw"><a class="link" href="atendente-atendimentos-atualizar.html" aria-label="Atualizar atendimento ATD-2026-0033">Atualizar <svg class="i sm" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg></a></td>
+              <td><span class="tag neutro">Aberto</span></td>
+              <td class="num">05/11/2026</td>
+              <td class="num nw">06/11/2026 09:40</td>
+              <td class="nw"><a class="link" href="#resolver" aria-label="Resolver atendimento ATD-2026-0033">Resolver <svg class="i sm" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg></a></td>
             </tr>
             <tr>
               <td class="nw"><strong class="num">ATD-2026-0031</strong></td>
               <td>Instabilidade na VPN site a site</td>
               <td>Grupo Aurora Logística</td>
               <td>Portal</td>
-              <td><span class="tag andamento">Em andamento</span></td>
-              <td class="num">29/10/2026</td>
-              <td class="nw"><a class="link" href="atendente-atendimentos-atualizar.html" aria-label="Atualizar atendimento ATD-2026-0031">Atualizar <svg class="i sm" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg></a></td>
+              <td><span class="tag neutro">Aberto</span></td>
+              <td class="num">05/11/2026</td>
+              <td class="num nw">06/11/2026 11:15</td>
+              <td class="nw"><a class="link" href="#resolver" aria-label="Resolver atendimento ATD-2026-0031">Resolver <svg class="i sm" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg></a></td>
             </tr>
             <tr>
               <td class="nw"><strong class="num">ATD-2026-0029</strong></td>
@@ -85,17 +89,9 @@
               <td>Clínica Vida Plena</td>
               <td>E-mail</td>
               <td><span class="tag neutro">Aberto</span></td>
-              <td class="num">28/10/2026</td>
-              <td class="nw"><a class="link" href="atendente-atendimentos-atualizar.html" aria-label="Atualizar atendimento ATD-2026-0029">Atualizar <svg class="i sm" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg></a></td>
-            </tr>
-            <tr>
-              <td class="nw"><strong class="num">ATD-2026-0026</strong></td>
-              <td>Bloqueio de acesso ao firewall corporativo</td>
-              <td>Mercado Bom Preço</td>
-              <td>Telefone</td>
-              <td><span class="tag resolvido">Resolvido</span></td>
-              <td class="num">27/10/2026</td>
-              <td class="nw"><a class="link" href="atendente-atendimentos-atualizar.html" aria-label="Atualizar atendimento ATD-2026-0026">Atualizar <svg class="i sm" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg></a></td>
+              <td class="num">04/11/2026</td>
+              <td class="num nw">05/11/2026 16:30</td>
+              <td class="nw"><a class="link" href="#resolver" aria-label="Resolver atendimento ATD-2026-0029">Resolver <svg class="i sm" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg></a></td>
             </tr>
             <tr>
               <td class="nw"><strong class="num">ATD-2026-0024</strong></td>
@@ -103,38 +99,72 @@
               <td>Escritório Campos &amp; Lima</td>
               <td>Chat</td>
               <td><span class="tag neutro">Aberto</span></td>
-              <td class="num">24/10/2026</td>
-              <td class="nw"><a class="link" href="atendente-atendimentos-atualizar.html" aria-label="Atualizar atendimento ATD-2026-0024">Atualizar <svg class="i sm" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg></a></td>
+              <td class="num">02/11/2026</td>
+              <td class="num nw">03/11/2026 10:20 <span class="tag negativo">Atrasado</span></td>
+              <td class="nw"><a class="link" href="#resolver" aria-label="Resolver atendimento ATD-2026-0024">Resolver <svg class="i sm" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg></a></td>
+            </tr>
+            <tr>
+              <td class="nw"><strong class="num">ATD-2026-0026</strong></td>
+              <td>Bloqueio de acesso ao firewall corporativo</td>
+              <td>Mercado Bom Preço</td>
+              <td>Telefone</td>
+              <td><span class="tag pendente">Aguardando cliente</span></td>
+              <td class="num">03/11/2026</td>
+              <td class="num nw">04/11/2026 14:05</td>
+              <td class="nw"></td>
             </tr>
             <tr>
               <td class="nw"><strong class="num">ATD-2026-0021</strong></td>
               <td>Renovação de certificado de segurança</td>
               <td>Transportadora Rota Sul</td>
               <td>E-mail</td>
-              <td><span class="tag resolvido">Resolvido</span></td>
-              <td class="num">22/10/2026</td>
-              <td class="nw"><a class="link" href="atendente-atendimentos-atualizar.html" aria-label="Atualizar atendimento ATD-2026-0021">Atualizar <svg class="i sm" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg></a></td>
+              <td><span class="tag pendente">Aguardando cliente</span></td>
+              <td class="num">03/11/2026</td>
+              <td class="num nw">04/11/2026 09:50</td>
+              <td class="nw"></td>
             </tr>
             <tr>
               <td class="nw"><strong class="num">ATD-2026-0018</strong></td>
               <td>Perda de pacotes na rede Wi-Fi da filial</td>
               <td>Colégio Novo Horizonte</td>
               <td>Portal</td>
-              <td><span class="tag resolvido">Resolvido</span></td>
-              <td class="num">20/10/2026</td>
-              <td class="nw"><a class="link" href="atendente-atendimentos-atualizar.html" aria-label="Atualizar atendimento ATD-2026-0018">Atualizar <svg class="i sm" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg></a></td>
+              <td><span class="tag resolvido">Encerrado</span></td>
+              <td class="num">27/10/2026</td>
+              <td class="num nw">28/10/2026 15:30</td>
+              <td class="nw"></td>
             </tr>
             <tr>
               <td class="nw"><strong class="num">ATD-2026-0015</strong></td>
               <td>Backup em nuvem sem concluir há 3 dias</td>
               <td>Indústria Metalúrgica Brasil</td>
               <td>Telefone</td>
-              <td><span class="tag andamento">Em andamento</span></td>
-              <td class="num">17/10/2026</td>
-              <td class="nw"><a class="link" href="atendente-atendimentos-atualizar.html" aria-label="Atualizar atendimento ATD-2026-0015">Atualizar <svg class="i sm" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg></a></td>
+              <td><span class="tag resolvido">Encerrado</span></td>
+              <td class="num">24/10/2026</td>
+              <td class="num nw">25/10/2026 08:45</td>
+              <td class="nw"></td>
             </tr>
             </tbody>
           </table>
+        </div>
+      </section>
+
+      <section class="card form-card" id="resolver" style="margin-top:28px">
+        <div class="card-body">
+          <h2 style="font-size:22px;font-weight:700;letter-spacing:-.6px">Resolver atendimento <span class="num">ATD-2026-0033</span></h2>
+          <p class="muted" style="margin:6px 0 26px">Queda intermitente no link dedicado · Redecom Telecom. Só é possível resolver uma vez; depois o status passa a Aguardando cliente.</p>
+          <form>
+            <div class="form-section" style="margin-bottom:0">
+              <div class="field">
+                <label id="lbl-solucao">Solução aplicada</label>
+                <div class="textarea placeholder" role="textbox" aria-multiline="true" aria-required="true" aria-labelledby="lbl-solucao">Descreva o que foi feito para resolver o problema do cliente.</div>
+                <div class="hint">Obrigatória. De 10 a 2000 caracteres.</div>
+              </div>
+            </div>
+            <div class="form-actions">
+              <small>O cliente será avisado. Sem resposta em 3 dias, o atendimento é encerrado.</small>
+              <a class="btn primary" href="atendente-atendimentos.html">Marcar como resolvido <svg class="i sm" viewBox="0 0 24 24"><path d="m20 6-11 11-5-5"/></svg></a>
+            </div>
+          </form>
         </div>
       </section>
 
